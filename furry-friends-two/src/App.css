@@ -1,0 +1,20 @@
+.dog-card .card-image {
+    height: 15em;
+}
+
+.dog-card image {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+.breed-list .radio {
+    display: block;
+    margin: 0 0 0.5em;
+    font-size: 1.25em;
+}
+
+.breed-list .radio input {
+    margin-right: 0.5em;
+}
