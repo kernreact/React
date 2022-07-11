@@ -15,7 +15,7 @@ body {
     padding: 0.5em 1em;
     line-height: 1;
     font-size: 18px;
-    border: 1px solid #ececec;
+    border: 1px solid #890808;
   }
   
   button {
@@ -28,7 +28,7 @@ body {
   }
   
   button:hover {
-    background: #c9c6c6;
+    background: #95da96;
   }
   
   label {
@@ -48,13 +48,13 @@ body {
   .container,
   .dogs-container {
     padding: 0 2em 2em;
-    border: 1px solid #ececec;
+    border: 1px solid #1c0551;
     border-radius: 4px;
     margin: 1em auto;
   }
   
   .form-message {
-    background-color: #ececec;
+    background-color: #bccab6;
     border-radius: 4px;
     margin: 1em auto;
     padding: 2em;
