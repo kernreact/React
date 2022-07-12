@@ -21,6 +21,7 @@ function App() {
         setIsLoading(loading => !isLoading);
         const fetchedPictures = await fetchPictures(selectedBreedId, 20);
         setPictures(fetchedPictures);
+        console.log("fetched", fetchedPictures);
         setIsLoading(loading => !loading);
       }
     };

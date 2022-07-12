@@ -2,8 +2,8 @@
 
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_DOG_API_URL;
-const API_KEY = process.env.REACT_APP_DOG_API_KEY;
+const API_URL = process.env.REACT_APP_DOG_API_URL ;
+const API_KEY = process.env.REACT_APP_DOG_API_KEY ;
 
 const callAPI = async (url, params = null) => {
     const requestConfig = {
