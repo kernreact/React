@@ -1,0 +1,20 @@
+// IMPORTS
+@import "../../node_modules/bulma/css/bulma.min.css";
+
+// VARIABLES
+$font-family: "Helvetica neue", Tahoma, sans-serif;
+$font-size: 16px;
+
+// GENERAL STYLES
+body {
+    font-family: $font-family;
+    font-size: $font-size;
+}
+
+aside {
+    &.menu {
+        background: aliceblue;
+        padding: 1em;
+        min-height: 50vh;
+    }
+}
