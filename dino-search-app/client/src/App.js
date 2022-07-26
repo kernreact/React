@@ -11,25 +11,21 @@ import DinoSearch from './components/DinoSearch';
 import DinoBrowse from './components/DinoBrowse';
 import DinoDetails from './components/DinoDetails';
 import Favourites from './components/Favourites';
+import NotFound from './components/NotFound';
 
 const App = () => {
-
   return (
     <Router>
       <Layout>
         <Routes>
-          <Route path="/login" component={LoginForm} />
-          <Route path="/favourites" component={Favourites} />
-          <Route path="/search" component={DinoSearch} />
-          <Route path="/browse/:name" component={DinoBrowse} />
-          <Route path="/browse" component={DinoBrowse} />
-          <Route path="/dinos/:id" component={DinoDetails} />
-          <Route path="/" exact component={DinoSearch} />
-          <Route>
-            <h1 className="title is-size-2">404 - Page not found</h1>
-            <p>Apologies, you've hit a route we hadn't planned for.</p>
-            <p>Go back to the <Link to="/">search page</Link> to start again</p>
-          </Route>
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/favourites" element={<Favourites />} />
+          <Route path="/search" element={<DinoSearch />} />
+          <Route path="/browse/:name" element={<DinoBrowse />} />
+          <Route path="/browse" element={<DinoBrowse />} />
+          <Route path="/dinos/:id" element={<DinoDetails />} />
+          <Route path="/" exact element={<DinoSearch />} />
+          <Route path="*" element={ <NotFound />} />
         </Routes>
       </Layout>
     </Router>

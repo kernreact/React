@@ -25,7 +25,7 @@ const rootReducer = combineReducers({
 export const StoreContext = createContext(null);
 
 export const StoreProvider = ({ children }) => {
-    const [state, dispatch] = useReducer[rootReducer, initialState];
+    const [state, dispatch] = useReducer(rootReducer, initialState);
     const store = useMemo(() => [state, dispatch], [state]);
     return (
         <StoreContext.Provider value={store}>{children}</StoreContext.Provider>

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 // actions and redux
 import { actions } from '../redux/authReducer';
@@ -57,7 +57,7 @@ export const withAuthenticationRequired = (Component, options) => {
 
         if(!isAuthenticated) {
             return (
-                <Redirect
+                <Navigate
                     to={{
                         pathname: "/login",
                         state: { from: location }
