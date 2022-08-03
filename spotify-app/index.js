@@ -47,7 +47,11 @@ app.get('/login', (req, res) => {
   const state = generateRandomString(16);
   res.cookie(stateKey, state);
 
-  const scope = 'user-read-private user-read-email';
+  const scope = [
+    'user-read-private',
+    'user-read-email',
+    'user-top-read'
+  ].join(' ');
 
   const queryParams = querystring.stringify({
     client_id: CLIENT_ID,
@@ -80,33 +84,21 @@ app.get('/callback', (req, res) => {
     .then(response => {
       if (response.status === 200) {
 
-        // const { access_token, token_type } = response.data;
+        // redirect to our react app
+        // pass along access token & refresh tolen in query params
 
-        // axios.get('https://api.spotify.com/v1/me', {
-        //   headers: {
-        //     Authorization: `${token_type} ${access_token}`
-        //   }
-        // })
-        //   .then(response => {
-        //     res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
-        //   })
-        //   .catch(error => {
-        //     res.send(error);
-        //   });
+        const { access_token, refresh_token, expires_in } = response.data;
 
-
-        const { refresh_token } = response.data;
-
-        axios.get(`http://localhost:8888/refresh_token?refresh_token=${refresh_token}`)
-          .then(response => {
-            res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
-          })
-          .catch(error => {
-            res.send(error);
-          });
+        const queryParams = querystring.stringify({
+          access_token,
+          refresh_token,
+          expires_in
+        })
+        
+        res.redirect(`http://localhost:3000/?${queryParams}`)
 
       } else {
-        res.send(response);
+        res.redirect(`/?${querystring.stringify({ error: 'invalid token' })}`);
       }
     })
     .catch(error => {
@@ -131,6 +123,7 @@ app.get('/refresh_token', (req, res) => {
     },
   })
     .then(response => {
+      console.log("response data", response.data);
       res.send(response.data);
     })
     .catch(error => {
